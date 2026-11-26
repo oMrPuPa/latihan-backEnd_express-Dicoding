@@ -12,7 +12,13 @@ router.get('/about', (_, res) => {
 
 router.get('/hello{/:name}', (req, res) => {
     const username = req.params.name || 'stranger';
-    res.send(`Hello ${username}`);
+    const lang = req.query.lang;
+
+    if (lang == 'id') {
+        res.send(`Halo ${username}`);
+    } else {
+        res.send(`Hello ${username}`);
+    };
 });
 
 router.all('/', (_, res) => {
