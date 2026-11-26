@@ -21,6 +21,20 @@ router.get('/hello{/:name}', (req, res) => {
     };
 });
 
+router.post('/login', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    if (username === 'Rafi' && password === '12345') {
+        res.send(`Selamat Datang ${username}`);
+    } else {
+        res.send('Username/Password Invalid');
+    };
+});
+
+router.all('/login', (_, res) => {
+    res.status(405).send("Halaman tidak dapat diakses dengan method tersebut.");
+})
 router.all('/', (_, res) => {
     res.status(405).send("Halaman tidak dapat diakses dengan method tersebut.");
 });
